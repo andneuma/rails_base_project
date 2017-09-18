@@ -24,3 +24,10 @@
 /public/packs
 /public/packs-test
 /node_modules
+
+# Wildcards
+*~                             
+*.swp
+*.swo
+.pyc
+*.orig
