@@ -9,7 +9,7 @@ Currently implemented
 
 # PREREQUISITS
 
-* Ruby version: 2.3.1
+* Ruby version: 2.3.1+
 
 * Database: PostgreSQL
 
@@ -22,6 +22,8 @@ Currently implemented
 * React
 
 * ES6 / Babel
+
+* Configurable Application Settings
 
 # BASIC SETUP
 
