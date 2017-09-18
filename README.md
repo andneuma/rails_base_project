@@ -4,8 +4,8 @@ This repository shall provide some boilerplate code for Rails 5.1 applications. 
 
 Currently implemented
 
-- [Basic React on Rails setup][https://github.com/andneuma/rails_base_project]
-- [User authentication][https://github.com/andneuma/rails_base_project/tree/user_authentication]
+- [Basic React on Rails setup](https://github.com/andneuma/rails_base_project)
+- [User authentication](https://github.com/andneuma/rails_base_project/tree/user_authentication)
 
 # PREREQUISITS
 
@@ -15,20 +15,20 @@ Currently implemented
 
 * Yarn, please visit https://yarnpkg.com/lang/en/docs/install/ for further information on how to install on your system
 
+* Foreman: Install via `gem install foreman`
+
 # BASIC SETUP
 
-* Clone repo using `git clone https://github.com/andneuma/rails_base_project/tree/<branch_name>`
+* Clone repo: `git clone https://github.com/andneuma/rails_base_project/tree/<branch_name>`
 
-* Setup DB `rake db:create db:migrate`
+* Setup DB: `rake db:create db:migrate`
 
-* Fetch gems and JS dependencies (-> yarn) `bundle && yarn`
+* Fetch gems and JS dependencies: `bundle && yarn`
 
-* Optionally: Checkout wheteher test-suite passes locally `rspec`
+* _Optionally: Checkout wheteher test-suite passes locally `rspec`_
 
-* Launch development server `foreman start -f Procfile.dev`
+* Launch development server: `foreman start -f Procfile.dev`
 
-__Note: Foreman is a tool to manage background processes in a development setup like sidekiq, etc. Define the processes within Procfile.dev
-
- Checkout this RailsCast episode to get further information on how foreman https://www.youtube.com/watch?v=zpEcox47ZV0__
+_Note: **Foreman** is a tool to manage background processes in a development setup like sidekiq, etc. Define the processes within Procfile.dev. Checkout this RailsCast episode to get further information on how foreman https://www.youtube.com/watch?v=zpEcox47ZV0
 
 * Visit http://localhost:3000/hello_world to check out whether sample react component is working properly
