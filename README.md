@@ -17,6 +17,12 @@ Currently implemented
 
 * Foreman: Install via `gem install foreman`
 
+# FEATURES
+
+* React
+
+* ES6 / Babel
+
 # BASIC SETUP
 
 * Clone repo: `git clone https://github.com/andneuma/rails_base_project/tree/<branch_name>`
