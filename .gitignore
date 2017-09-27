@@ -31,3 +31,9 @@
 *.swo
 .pyc
 *.orig
+
+# assets
+/public/assets
+
+# RubyMine
+./idea/
