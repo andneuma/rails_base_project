@@ -16,23 +16,12 @@ ActiveRecord::Schema.define(version: 20170918090600) do
   enable_extension "plpgsql"
 
   create_table "admin_settings", force: :cascade do |t|
-    t.string "app_title", default: "", null: false
+    t.string "app_title", default: "Rails project", null: false
     t.string "relay_mail_address", default: "foo@bar.org", null: false
     t.string "captcha_system", default: "recaptcha", null: false
     t.integer "user_activation_tokens", default: 3, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
-    t.string "password_reset_digest"
-    t.string "email"
-    t.boolean "is_admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "password_reset_timestamp"
   end
 
 end
