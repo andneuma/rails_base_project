@@ -1,7 +1,7 @@
 .navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %a.navbar-brand{:href => "../"}= Admin::Setting.app_title
+      = link_to Admin::Setting.app_title, root_path, class: 'navbar-brand'
       %button.navbar-toggle{"data-target" => "#navbar-main", "data-toggle" => "collapse", :type => "button"}
         %span.icon-bar
         %span.icon-bar

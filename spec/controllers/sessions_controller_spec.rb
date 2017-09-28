@@ -7,7 +7,7 @@ describe SessionsController do
       @user = create :user, name: 'Norbert', email: 'foo@bar.org'
     end
 
-    it 'Can login as activated user' do
+    it 'Can login as activated users' do
       post :create, params: {
         session: { email: @user.email, password: 'secret' }
       }
@@ -15,8 +15,7 @@ describe SessionsController do
       exp_response = { name: @user.name, email: @user.email }.to_json
 
       expect(session[:user_id]).to eq(@user.id)
-      expect(response.body).to eq exp_response
-      expect(response.status).to eq 200
+      expect(response).to redirect_to root_path
     end
 
     it 'Returns 401 in case of wrong credentials' do
@@ -25,10 +24,10 @@ describe SessionsController do
       }
 
       expect(session[:user_id]).to be_nil
-      expect(response.status).to eq 401
+      expect(response).to redirect_to login_path
     end
 
-    it 'Returns 401 in case of non-activated user' do
+    it 'Returns 401 in case of non-activated users' do
       inactive_user = create :user, activated: false
 
       post :create, params: {
@@ -36,7 +35,7 @@ describe SessionsController do
       }
 
       expect(session[:user_id]).to be_nil
-      expect(response.status).to eq 401
+      expect(response).to redirect_to login_path
     end
   end
 

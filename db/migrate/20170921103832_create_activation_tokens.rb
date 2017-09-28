@@ -4,7 +4,7 @@ class CreateActivationTokens < ActiveRecord::Migration[5.1]
       t.boolean :redeemed
       t.datetime :redeemed_on
       t.string :token
-      t.references :user, foreign_key: true
+      t.references :users, foreign_key: true
 
       t.timestamps
     end

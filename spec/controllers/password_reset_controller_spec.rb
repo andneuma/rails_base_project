@@ -39,7 +39,7 @@ RSpec.describe PasswordResetController, type: :controller do
   end
 
   context 'GET #reset_password' do
-    let (:user) { create :user, name: 'Norbert', email: 'norbert@example.com' }
+    let(:user) { create :user, name: 'Norbert', email: 'norbert@example.com' }
 
     it 'allows password reset for valid token' do
       user.create_digest_for(attribute: 'password_reset')

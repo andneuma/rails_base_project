@@ -16,11 +16,11 @@ RSpec.describe Admin::UsersController, type: :controller do
   end
 
   context 'POST #create' do
-    it 'can add new user as admin' do
+    it 'can add new users as admin' do
       login_as create :user, :admin
 
       expect {
-        post :create, params: { user: {
+        post :create, params: {user: {
           name: 'foo', email: 'foo@bar.org', password: 'secret', password_confirmation: 'secret', is_admin: false } }
       }.to change { User.count }.by(1)
     end
@@ -28,7 +28,7 @@ RSpec.describe Admin::UsersController, type: :controller do
     it 'automatically activates new users if added as admin' do
       login_as create :user, :admin
 
-      post :create, params: { user: {
+      post :create, params: {user: {
         name: 'foo', email: 'foo@bar.org', password: 'secret', password_confirmation: 'secret', is_admin: false } }
 
       expect(User.find_by(name: 'foo').activated).to be true
@@ -41,7 +41,7 @@ RSpec.describe Admin::UsersController, type: :controller do
       login_as create :user, :admin
     end
 
-    it 'can activate user' do
+    it 'can activate users' do
       patch :toggle_activation, params: { id: @user.id }
 
       expect(@user.reload.activated).to be true
@@ -54,13 +54,13 @@ RSpec.describe Admin::UsersController, type: :controller do
       login_as @admins.first
     end
 
-    it 'deletes user' do
+    it 'deletes users' do
       expect {
         delete :destroy, params: { id: @admins.last.id }
       }.to change { User.count }.by(-1)
     end
 
-    it 'does not delete own current user' do
+    it 'does not delete own current users' do
       expect {
         delete :destroy, params: { id: @admins.first.id }
       }.to change { User.count }.by(0)

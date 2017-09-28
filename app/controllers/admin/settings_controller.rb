@@ -3,13 +3,27 @@ class Admin::SettingsController < Admin::AdminController
 
   def edit
     @settings_hash = Admin::Setting.all_settings
+    respond_to do |format|
+			format.html
+      format.json { render json: @settings_hash.to_json, status: :ok }
+    end
   end
 
   def update
-    if @settings.update_attributes(settings_params)
-      redirect_to admin_settings_url
-    else
-      render :edit
+    respond_to do |format|
+      if @settings.update_attributes(settings_params)
+        format.html do
+          flash[:success] = "Settings updated successfully!"
+          redirect_to admin_settings_url
+        end
+        format.json { render json: @settings.to_json, status: :ok}
+      else
+        format.html do
+          flash[:danger] = @settings.errors.full_messages.to_sentence
+          render :edit
+        end
+        format.json { render json: @settings.errors.to_json, status: :bad_request}
+			end
     end
   end
 
@@ -23,10 +37,10 @@ class Admin::SettingsController < Admin::AdminController
 
   def check_captcha_system(captcha_system:)
     case captcha_system
-    when 'recaptcha'
-      return recaptcha_status
-    when 'simple_captcha'
-      return simple_captcha_status
+      when 'recaptcha'
+        return recaptcha_status
+      when 'simple_captcha'
+        return simple_captcha_status
     end
   end
 
@@ -44,15 +58,15 @@ class Admin::SettingsController < Admin::AdminController
 
   def settings_params
     params.require(:admin_setting).permit(
-      :app_title,
-      :admin_email_address,
-      :user_activation_tokens,
-      :captcha_system,
-      :app_imprint,
-      :app_privacy_policy,
-      :multi_color_pois,
-      :default_poi_color,
-      :expiry_days
+        :app_title,
+        :admin_email_address,
+        :user_activation_tokens,
+        :captcha_system,
+        :app_imprint,
+        :app_privacy_policy,
+        :multi_color_pois,
+        :default_poi_color,
+        :expiry_days
     )
 
   end

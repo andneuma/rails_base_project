@@ -1,3 +1,10 @@
 .container
   %h1 Account preferences
-  = render 'form'
+  .container
+    .row
+      .col-md-4.activation-tokens
+        %h3 Tokens
+        = render 'users/activation_tokens'
+      .col-md-8
+        %h3 User settings
+        = render 'users/form'

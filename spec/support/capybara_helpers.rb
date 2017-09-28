@@ -1,6 +1,6 @@
 module CapybaraHelpers
   def login_as_user
-    user = create :user, email: 'user@example.com', password: 'secret', password_confirmation: 'secret'
+    user = create :users, email: 'users@example.com', password: 'secret', password_confirmation: 'secret'
     visit 'login/'
     fill_in 'sessions_email', with: user.email
     fill_in 'sessions_password', with: 'secret'
@@ -8,7 +8,7 @@ module CapybaraHelpers
   end
 
   def login_as_admin
-    admin = create :user, :admin, name: 'Admin', email: 'admin@example.com', password: 'secret', password_confirmation: 'secret'
+    admin = create :users, :admin, name: 'Admin', email: 'admin@example.com', password: 'secret', password_confirmation: 'secret'
     visit login_path
     fill_in 'sessions_email', with: admin.email
     fill_in 'sessions_password', with: 'secret'

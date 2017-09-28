@@ -1,0 +1,6 @@
+.col-md-4.activation_tokens
+  .row
+    - @user.activation_tokens.each do |token|
+      = render partial: 'activation_token', locals: { token: token }
+    - if @user.activation_tokens.empty?
+      = t('.no_activation_tokens')

@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   get '/sign_up', to: 'users#new', as: :sign_up
   post '/sign_up', to: 'users#create'
 
-  # resources :users, except: [:show, :new, :create, :index]
-  resources :users, only: [:edit, :update, :destroy]
+  resources :users, only: [:edit, :update]
+	delete '/users/:id', to: 'users#destroy', as: :destroy_user
+
 
   # Password reset
   get '/request_password_reset/new', to: 'password_reset#request_password_reset', as: :request_password_reset

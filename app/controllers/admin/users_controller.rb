@@ -3,16 +3,31 @@ class Admin::UsersController < Admin::AdminController
 
   def index
     @users = User.all
+		respond_to do |format|
+			format.html
+      format.json { render json: @user.to_json, status: :ok}
+    end
   end
 
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      activate_user
-      render json: @user.to_json, status: :ok
-    else
-      render json: @user.errors.full_messages, status: :bad_request
+    respond_to do |format|
+      if @user.save
+        activate_user
+				format.json { render json: @user.to_json, status: :ok }
+				format.html do
+          flash[:success] = "User created successfully"
+          redirect_to admin_index_users_path
+        end
+      else
+        format.json { render json: @user.errors.full_messages, status: :bad_request }
+        format.html do
+          flash[:success] = @user.errors.full_messages.to_sentence
+					render :new
+        end
+
+      end
     end
   end
 
@@ -20,14 +35,20 @@ class Admin::UsersController < Admin::AdminController
     new_val = !@user.activated
 
     if @user.update_attributes(activated: new_val)
-      render json: @user.to_json, status: :ok
+      respond_to do |format|
+        format.json { render json: @user.to_json, status: :ok }
+        format.html { redirect_to admin_index_users_path }
+      end
     end
   end
 
   def destroy
     unless try_deleting_own_user?
       @user.destroy
-      render :index
+      respond_to do |format|
+				format.json { render json: nil, status: :ok}
+        format.html { redirect_to admin_index_users_path }
+      end
     end
   end
 
@@ -35,7 +56,13 @@ class Admin::UsersController < Admin::AdminController
 
   def try_deleting_own_user?
     if @user == current_user
-      render status: :forbidden, json: nil
+			respond_to do |format|
+				format.html do
+          flash[:success] = "You cannot delete yourself via this interface!"
+          redirect_to admin_index_users_path
+        end
+        format.json { render status: :forbidden, json: nil }
+      end
     end
   end
 

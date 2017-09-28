@@ -1,6 +1,6 @@
 # USERS
 User.destroy_all
-User.create(
+u1 = User.create(
 				name: 'test',
 				email: 'user@test.com',
 				password: 'secret',
@@ -8,6 +8,8 @@ User.create(
 				activated: true,
 				is_admin: false
 )
+
+u1.activation_tokens.first.update_attributes(redeemed: true)
 
 User.create(
 				name: 'admin',

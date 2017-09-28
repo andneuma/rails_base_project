@@ -11,35 +11,63 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      redeem_activation_token
-      redirect_to root_url
-    else
-      render json: @user.errors.full_messages, status: :bad_request
-    end
+		respond_to do |format|
+			if @user.save
+				redeem_activation_token
+
+				format.json { render json: @user.to_json, status: :success}
+				format.html do
+					flash[:success] = "User successfully created"
+					redirect_to root_url
+				end
+			else
+				format.json { render json: @user.errors.full_messages, status: :bad_request }
+				format.html do
+					flash[:danger] = @user.errors.full_messages.to_sentence
+					render :new
+				end
+			end
+		end
   end
 
   def edit
   end
 
   def update
-    if @user.update_attributes(user_params)
-      render json: @user.to_json, status: :ok
-    else
-      render json: @user.errors.full_messages, status: :bad_request
+    respond_to do |format|
+      if @user.update_attributes(user_params)
+				format.json { render json: @user.to_json, status: :success }
+        format.html do
+					redirect_to edit_user_path(id: @user.id)
+          flash[:success] = 'Successfully updated your users preferences'
+        end
+      else
+        format.json { render json: @user.errors.full_messages, status: :bad_request }
+				format.html do
+					render :edit
+					flash[:danger] = @user.errors.full_messages.to_sentence
+				end
+      end
     end
   end
 
   def destroy
     @user = User.find(params[:id])
 
-    if try_deleting_own_user?
-      @user.destroy && logout
+		respond_to do |format|
+			if try_deleting_own_user?
+				@user.destroy && logout
 
-      redirect_to root_url
-    else
-      render json: nil, status: :forbidden
-    end
+				format.json { render json: nil, status: :success}
+				format.html do
+					flash[:warning] = "You have just deleted your own account!"
+					redirect_to root_url
+				end
+			else
+				format.json { render json: nil, status: :forbidden }
+				format.html { head :forbidden }
+			end
+		end
   end
 
   private
@@ -50,9 +78,14 @@ class UsersController < ApplicationController
     )
   end
 
-  # Restrict access to record only if comes from same user
+  # Restrict access to record only if comes from same users
   def same_user_origin
-    redirect_to root_url unless current_user.id == @user.id
+		unless current_user.id == @user.id
+			respond_to do |format|
+				format.html { redirect_to root_url }
+				format.json { render json: nil, status: :forbidden }
+			end
+		end
   end
 
   def set_user
@@ -65,6 +98,16 @@ class UsersController < ApplicationController
 
   def needs_valid_token
     @token = ActivationToken.find_by(token: params[:activation_token])
-    render json: nil, status: :unauthorized unless @token.present?
-  end
+
+		unless @token.present?
+			respond_to do |format|
+				format.json { render json: nil, status: :unauthorized }
+				format.html { render :new }
+			end
+		end
+	end
+
+	def try_deleting_own_user?
+		@user == current_user
+	end
 end

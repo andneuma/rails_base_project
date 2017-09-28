@@ -1,11 +1,9 @@
 = form_for(@user) do |f|
   .row
-    -#- if needs_activation_token?
-    -#  %fieldset.form-group
-    -#    = label_tag 'activation_token', t('.activation_token')
-    -#    %p
-    -#      %i= t('.activation_token_info')
-    -#    = text_field_tag :activation_token, '', class: 'form-control'
+    - if needs_activation_token?
+      .col-md-6
+        = label_tag :activation_token
+        = text_field_tag :activation_token, class: 'form-control'
     .col-md-6
       = f.label :name, 'User name'
       = f.text_field :name, class: 'form-control'

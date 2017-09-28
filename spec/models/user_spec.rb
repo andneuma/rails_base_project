@@ -24,12 +24,12 @@ describe User do
       expect(user).not_to be_valid
     end
 
-    it 'cannot add user with invalid email' do
+    it 'cannot add users with invalid email' do
       user.email = 'foo@bar'
       expect(user).not_to be_valid
     end
 
-    it 'cannot add user with duplicate email address' do
+    it 'cannot add users with duplicate email address' do
       create :user, email: 'foo@bar.org'
       another_user = build :user, email: 'foo@bar.org'
 
@@ -37,26 +37,26 @@ describe User do
     end
   end
 
-  context 'Regular user' do
+  context 'Regular users' do
     let(:user) { build :user }
 
-    it 'user email is not blank' do
+    it 'users email is not blank' do
       expect(user.email.present?).to be true
     end
 
-    it "user is not admin" do
+    it "users is not admin" do
       expect(user.admin?).not_to be true
     end
 
-    it "user is signed in" do
+    it "users is signed in" do
       expect(user.signed_in?).to be true
     end
   end
 
-  context 'Admin user' do
+  context 'Admin users' do
     let(:admin) { build :user, :admin}
 
-    it 'admin user is admin' do
+    it 'admin users is admin' do
       expect(admin.admin?).to be true
     end
   end
