@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
     scope '/users' do
       get '', to: 'users#index', as: :index_users
+			get '/new', to: 'users#new', as: :new_user
       post '', to: 'users#create'
       delete '/:id', to: 'users#destroy', as: :delete_user
       patch '/:id/toggle_activation', to: 'users#toggle_activation', as: :toggle_activation

@@ -5,6 +5,15 @@ class Admin::UsersController < Admin::AdminController
     @users = User.all
 		respond_to do |format|
 			format.html
+      format.json { render json: @users.to_json, status: :ok}
+    end
+  end
+
+  def new
+    @user = User.new
+
+		respond_to do |format|
+			format.html
       format.json { render json: @user.to_json, status: :ok}
     end
   end
@@ -58,7 +67,7 @@ class Admin::UsersController < Admin::AdminController
     if @user == current_user
 			respond_to do |format|
 				format.html do
-          flash[:success] = "You cannot delete yourself via this interface!"
+          flash[:danger] = "You cannot delete yourself via this interface!"
           redirect_to admin_index_users_path
         end
         format.json { render status: :forbidden, json: nil }

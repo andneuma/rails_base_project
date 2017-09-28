@@ -1,0 +1,20 @@
+= form_for(@user) do |f|
+  .row
+    .col-md-6
+      = f.label :is_admin
+      = f.check_box :is_admin
+    .col-md-6
+      = f.label :name, 'User name'
+      = f.text_field :name, class: 'form-control'
+    .col-md-6
+      = f.label :email, 'Email address'
+      = f.text_field :email, class: 'form-control'
+    .col-xs-12
+      = f.label :password, 'Password'
+      = f.password_field :password, class: 'form-control'
+    .col-xs-12
+      = f.label :password_confirmation, 'Password confirmation'
+      = f.password_field :password_confirmation, class: 'form-control'
+  .row.button-row
+    .col-xs-12.col-md-4
+      = f.submit 'Submit', class: 'btn btn-success btn-block'
