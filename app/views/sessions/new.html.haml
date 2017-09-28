@@ -1,11 +1,11 @@
 .container
-  = form_for(:session, url: login_path) do |f|
-    .row
-      %h4 Login
-      .col-xs-6
-        = f.text_field :email, placeholder: t('.enter_email'), class: 'form-control'
-      .col-xs-6
-        = f.password_field :password, placeholder: t('.enter_password'), class: 'form-control'
-    .row
-      .col-xs-6
-        = f.submit 'Login', class: 'btn btn-primary btn-success'
+  %h2.text-center Login
+  .jumbotron
+    = form_for(:session, url: login_path) do |f|
+      .row
+        .col-xs-12.col-md-5
+          = f.text_field :email, placeholder: 'Name or email address', class: 'form-control'
+        .col-xs-12.col-md-5
+          = f.password_field :password, placeholder: 'Password', class: 'form-control'
+        .col-xs-12.col-md-2
+          = f.submit 'Login', class: 'btn btn-success btn-block'

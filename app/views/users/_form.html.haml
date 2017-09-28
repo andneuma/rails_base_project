@@ -1,0 +1,23 @@
+= form_for(@user) do |f|
+  .row
+    -#- if needs_activation_token?
+    -#  %fieldset.form-group
+    -#    = label_tag 'activation_token', t('.activation_token')
+    -#    %p
+    -#      %i= t('.activation_token_info')
+    -#    = text_field_tag :activation_token, '', class: 'form-control'
+    .col-md-6
+      = f.label :name, 'User name'
+      = f.text_field :name, class: 'form-control'
+    .col-md-6
+      = f.label :email, 'Email address'
+      = f.text_field :email, class: 'form-control'
+    .col-xs-12
+      = f.label :password, 'Password'
+      = f.password_field :password, class: 'form-control'
+    .col-xs-12
+      = f.label :password_confirmation, 'Password confirmation'
+      = f.password_field :password_confirmation, class: 'form-control'
+  .row.button-row
+    .col-xs-12.col-md-4
+      = f.submit 'Submit', class: 'btn btn-success btn-block'

@@ -1,0 +1,10 @@
+%li.dropdown
+  %a#themes.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    User
+    %span.caret
+  %ul.dropdown-menu{"aria-labelledby" => "themes"}
+    %li
+      = link_to 'Preferences', edit_user_path(id: current_user.id)
+    %li.divider
+    %li
+      = link_to 'Sign out', logout_path(id: current_user.id)
