@@ -8,7 +8,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !de
 // Navbar =====================================================================
 
 .sandstone {
-  font-size: 14px;
+  font-size: 11px;
   line-height: 22px;
   font-weight: 500;
   text-transform: uppercase;
@@ -22,10 +22,6 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !de
   &-form input,
   &-form .form-control {
     border: none;
-  }
-
-  .navbar-brand {
-    font-weight: bolder;
   }
 }
 
@@ -58,11 +54,11 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,500,700" !de
 
 input,
 .form-control {
-  //@include box-shadow(none);
+  @include box-shadow(none);
 
   &:focus {
     border-color: $input-border;
-    //@include box-shadow(none);
+    @include box-shadow(none);
   }
 }
 
@@ -157,10 +153,10 @@ input,
 .progress {
   border-radius: 10px;
   background-color: $gray-light;
-  //@include box-shadow(none);
+  @include box-shadow(none);
 
   &-bar {
-    //@include box-shadow(none);
+    @include box-shadow(none);
   }
 }
 
@@ -173,11 +169,11 @@ input,
 }
 
 .well {
-  //@include box-shadow(none);
+  @include box-shadow(none);
 }
 
 .panel {
-  //@include box-shadow(none);
+  @include box-shadow(none);
 
   .panel-heading,
   .panel-title {

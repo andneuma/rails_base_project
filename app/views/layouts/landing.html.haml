@@ -1,0 +1,201 @@
+.container
+  %h1 Jumbotron
+  .jumbotron
+    %h2.text-center Do something
+    %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    %p
+      %a.btn.btn-primary.btn-lg.btn-block Learn more
+
+%hr
+.container
+  %h1 Tables
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th #
+        %th Column heading
+        %th Column heading
+        %th Column heading
+    %tbody
+      %tr
+        %td 1
+        %td Column content
+        %td Column content
+        %td Column content
+      %tr
+        %td 2
+        %td Column content
+        %td Column content
+        %td Column content
+      %tr.info
+        %td 3
+        %td Column content
+        %td Column content
+        %td Column content
+      %tr.success
+        %td 4
+        %td Column content
+        %td Column content
+        %td Column content
+      %tr.danger
+        %td 5
+        %td Column content
+        %td Column content
+        %td Column content
+      %tr.warning
+        %td 6
+        %td Column content
+        %td Column content
+        %td Column content
+      %tr.active
+        %td 7
+        %td Column content
+        %td Column content
+        %td Column content
+
+%hr
+.container
+  %h1 Forms
+  .form-group
+    %label.control-label{:for => "focusedInput"} Focused input
+    %input#focusedInput.form-control{:type => "text", :value => "This is focused..."}/
+  .form-group
+    %label.control-label{:for => "disabledInput"} Disabled input
+    %input#disabledInput.form-control{:disabled => "disabled", :placeholder => "Disabled input here...", :type => "text"}/
+  .form-group.has-warning
+    %label.control-label{:for => "inputWarning"} Input warning
+    %input#inputWarning.form-control{:type => "text"}/
+  .form-group.has-error
+    %label.control-label{:for => "inputError"} Input error
+    %input#inputError.form-control{:type => "text"}/
+  .form-group.has-success
+    %label.control-label{:for => "inputSuccess"} Input success
+    %input#inputSuccess.form-control{:type => "text"}/
+  .form-group
+    %label.control-label{:for => "inputLarge"} Large input
+    %input#inputLarge.form-control.input-lg{:type => "text"}/
+  .form-group
+    %label.control-label{:for => "inputDefault"} Default input
+    %input#inputDefault.form-control{:type => "text"}/
+  .form-group
+    %label.control-label{:for => "inputSmall"} Small input
+    %input#inputSmall.form-control.input-sm{:type => "text"}/
+  .form-group
+    %label.control-label Input addons
+    .input-group
+      %span.input-group-addon $
+      %input.form-control{:type => "text"}/
+      %span.input-group-btn
+        %button.btn.btn-default{:type => "button"} Button
+
+%hr
+.container
+  %h1 Indicators
+  .row
+    .col-lg-12
+      %h2 Alerts
+      .bs-component
+        .alert.alert-dismissible.alert-warning
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %h4 Warning!
+          %p
+            Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna,
+            = succeed "." do
+              %a.alert-link{:href => "#"} vel scelerisque nisl consectetur et
+  .row
+    .col-lg-4
+      .bs-component
+        .alert.alert-dismissible.alert-danger
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %strong Oh snap!
+          %a.alert-link{:href => "#"} Change a few things up
+          and try submitting again.
+    .col-lg-4
+      .bs-component
+        .alert.alert-dismissible.alert-success
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %strong Well done!
+          You successfully read
+          = succeed "." do
+            %a.alert-link{:href => "#"} this important alert message
+    .col-lg-4
+      .bs-component
+        .alert.alert-dismissible.alert-info
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %strong Heads up!
+          This
+          = succeed "," do
+            %a.alert-link{:href => "#"} alert needs your attention
+  .row
+    .col-lg-4
+      %h2 Labels
+      .bs-component{:style => "margin-bottom: 40px;"}
+        %span.label.label-default Default
+        %span.label.label-primary Primary
+        %span.label.label-success Success
+        %span.label.label-warning Warning
+        %span.label.label-danger Danger
+        %span.label.label-info Info
+    .col-lg-4
+      %h2 Badges
+      .bs-component
+        %ul.nav.nav-pills
+          %li.active
+            %a{:href => "#"}
+              Home
+              %span.badge 42
+          %li
+            %a{:href => "#"}
+              Profile
+              %span.badge
+          %li
+            %a{:href => "#"}
+              Messages
+              %span.badge 3
+
+%hr
+.container
+  %h1 Panels
+  .row
+    .col-lg-4
+      .bs-component
+        .panel.panel-default
+          .panel-body
+            Basic panel
+        .panel.panel-default
+          .panel-heading Panel heading
+          .panel-body
+            Panel content
+        .panel.panel-default
+          .panel-body
+            Panel content
+          .panel-footer Panel footer
+    .col-lg-4
+      .bs-component
+        .panel.panel-primary
+          .panel-heading
+            %h3.panel-title Panel primary
+          .panel-body
+            Panel content
+        .panel.panel-success
+          .panel-heading
+            %h3.panel-title Panel success
+          .panel-body
+            Panel content
+        .panel.panel-warning
+          .panel-heading
+            %h3.panel-title Panel warning
+          .panel-body
+            Panel content
+    .col-lg-4
+      .bs-component
+        .panel.panel-danger
+          .panel-heading
+            %h3.panel-title Panel danger
+          .panel-body
+            Panel content
+        .panel.panel-info
+          .panel-heading
+            %h3.panel-title Panel info
+          .panel-body
+            Panel content
