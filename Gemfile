@@ -19,7 +19,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'rack-attack'
+gem 'rails-controller-testing'
 gem "react_on_rails", "9.0.0"
+gem 'responders'
 gem 'sidekiq'
 gem "webpacker", "~> 3.0"
 

@@ -1,0 +1,56 @@
+%h1 Settings
+
+.container
+  = form_for(@settings, url: admin_settings_path) do |f|
+    %ul.nav.nav-tabs
+      %li.nav.active
+        %a{'data-toggle' => 'tab', href: '#base'}
+          Base settings
+      %li.nav
+        %a{'data-toggle' => 'tab', href: '#users'}
+          Users
+      %li.nav
+        %a{'data-toggle' => 'tab', href: '#security'}
+          Security
+
+    .tab-content
+      -# PUBLIC SETTINGS
+      .tab-pane.active#base
+        .col-xs-12
+          = f.label :app_title, 'App title'
+          = f.text_field :app_title, class: 'form-control', placeholder: t('.app_title')
+
+        .col-xs-12
+          = f.label :admin_email_address, 'Relay email address'
+          = f.text_field :admin_email_address, class: 'form-control', placeholder: t('.admin_email_address')
+
+
+      -# USER SETTINGS
+      .tab-pane#users
+        .col-xs-12.col-md-6.col-lg-4
+          = f.label :user_activation_tokens, t('.user_activation_tokens')
+          = f.number_field :user_activation_tokens, min: 0, class: 'form-control'
+
+
+      -# SECURITY SETTINGS
+      .tab-pane#security
+        %fieldset.form-group.row
+          .col-xs-12
+            .label-div
+              = f.label :captcha_system, 'Captcha system'
+            .selection-div
+              = f.collection_select :captcha_system, Admin::Setting.captcha_systems, :to_s, :humanize, class: 'form-control'
+              .notification
+                .icon.pull-left
+                  .status-icon.spinner-icon.fa.fa-circle-o-notch.fa-spin.fa-1x.fa-fw
+                  .status-icon.error-icon.fa.fa-exclamation-triangle
+                  .success-icon.fa.fa-check-circle
+                .status-text
+
+    -# BUTTONS
+    .spacer-row
+    .row
+      .col-xs-6.col-md-3
+        = f.submit 'Update', class: 'btn btn-primary btn-success'
+      .col-xs-6.col-md-3
+        = link_to 'Back', '', class: 'btn btn-primary btn-danger back-button'

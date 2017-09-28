@@ -25,6 +25,8 @@ Currently implemented
 
 * Configurable Application Settings
 
+* Basic user management
+
 # BASIC SETUP
 
 * Clone repo: `git clone https://github.com/andneuma/rails_base_project/tree/<branch_name>`

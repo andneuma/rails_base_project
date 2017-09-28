@@ -1,0 +1,3 @@
+class Admin::AdminController < ApplicationController
+  before_action :require_admin # Little redundancy as route shall be blocked...
+end

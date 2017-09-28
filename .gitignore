@@ -26,14 +26,17 @@
 /node_modules
 
 # Wildcards
-*~                             
+*~
 *.swp
 *.swo
-.pyc
+*.pyc
 *.orig
 
 # assets
 /public/assets
 
 # RubyMine
-./idea/
+.idea/*
+
+# CTags
+tags
