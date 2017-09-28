@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 20170922081852) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -49,5 +47,4 @@ ActiveRecord::Schema.define(version: 20170922081852) do
   end
 
   add_foreign_key "activation_tokens", "users"
->>>>>>> fc17e27... Add user authentication and management
 end

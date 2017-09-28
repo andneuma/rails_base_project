@@ -30,4 +30,8 @@
           %a{:href => "#"} Stuff
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{:href => "#"} Sign in
+          - if current_user.guest?
+            = link_to 'Sign in', login_url
+          - else
+            = link_to 'Sign out', logout_path(id: current_user.id)
+
