@@ -19,9 +19,9 @@
           %td= user.created_at.to_s
           %td
             = link_to edit_user_path(user) do
-              %span.glyphicon.glyphicon-pencil
+              %span.fa.fa-pencil
           %td
             = link_to admin_delete_user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this users?' } do
-              %span.glyphicon.glyphicon-trash
+              %span.fa.fa-trash
   .col-md-12
     = link_to 'Add new User', admin_new_user_path, class: 'btn btn-success'
