@@ -7,9 +7,9 @@
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "jquery": "^3.2.1",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-on-rails": "^9.0.2"
   },
   "devDependencies": {
